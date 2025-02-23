@@ -37,15 +37,15 @@ const Map = ({ infoBlockRef }) => {
     .domain(Object.values(data)) // Use the values from the data object
     .range(csvFile === "/ca_county_values.csv"
       ? [
-          "#ffedea",
-          "#ffcec5",
-          "#ffad9f",
-          "#ff8a75",
-          "#ff5533",
-          "#e2492d",
-          "#be3d26",
-          "#9a311f",
-          "#782618" // Red gradient
+          "#fffff0",
+          "#fffde7",
+          "#fff9c4",
+          "#fff59d",
+          "#fff176",
+          "#ffeb3b",
+          "#ffca28",
+          "#ffc107",
+          "#ffeb3b"
         ]
       : [
           "#e0e7ff", // Lightest blue
