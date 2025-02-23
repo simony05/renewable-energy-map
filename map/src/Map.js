@@ -35,6 +35,7 @@ const Map = ({ infoBlockRef }) => {
   // Create the color scale based on loaded data
   const colorScale = scaleQuantile()
     .domain(Object.values(data)) // Use the values from the data object
+    // .domain([60, 100]) 
     .range(csvFile === "/ca_county_values.csv"
       ? [
           "#fffff0",
