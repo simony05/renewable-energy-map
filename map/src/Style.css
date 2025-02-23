@@ -1,10 +1,10 @@
 /* App */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 body {
   margin:0;
   color: #5a754b;
-  background-color: rgb(209, 212, 185);
+  background-color: rgb(187, 190, 164);
 }
 
 .App {
@@ -14,18 +14,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("https://www.transparenttextures.com/patterns/exclusive-paper.png");
-  background-position: center;
-  background-size: cover; /* Ensure the image covers the entire container */
+  background-image: url("crossword.png");
+  background-repeat: repeat;
   position: relative;
 }
 
 
 .app-title {
-  margin: 10px 0 20px;
-  font-family: "Poppins", serif;
-  font-size: 70px;
-  font-weight: 400;
+  margin: 10px 0 10px;
+  font-family: "Fraunces", serif;
+  font-size: 60px;
 }
 
 .app-content {
@@ -56,6 +54,16 @@ body {
 /* Map */
 .map-container {
   position: relative;
+  width: 700px;
+  height: 600px;
+  border: 2px solid white;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  background-color: rgb(207, 209, 190);
 }
 
 /* App.css */
@@ -79,16 +87,9 @@ body {
 }
 
 .map-wrapper {
-  width: 500px;
-  height: 500px;
-  border: 2px solid white;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(1px);
-  background-color: rgba(226, 228, 207);
+  width: 600px;
+  height: 600px;
+  
 }
 
 .geography-default {
@@ -110,7 +111,7 @@ body {
 
 .info-container {
   width: 300px;
-  height: 500px;
+  height: 600px;
   border: 2px solid white;
   border-radius: 30px;
   display: flex;
@@ -120,7 +121,7 @@ body {
   background-color: none;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(1px);
-  background-color: rgb(226, 228, 207);
+  background-color: rgb(207, 209, 190);
 }
 
 .info-container h2 {
