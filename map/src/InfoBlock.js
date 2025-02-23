@@ -51,7 +51,7 @@ const InfoBlock = forwardRef((props, ref) => {
   const getGroqResponse = async (messageContent) => {
     const stream = await groq.chat.completions.create({
       messages: [
-        { role: "system", content: "You are an expert about solar power that is trying to helpful and educational." },
+        { role: "system", content: `You are an expert about solar power that is trying to helpful and educational. Please only speak in full sentences like you are in a conversation. Only talk about ${countyName}.` },
         { role: "user", content: messageContent },
       ],
       model: "llama-3.3-70b-versatile",
