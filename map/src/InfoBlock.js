@@ -1,4 +1,5 @@
 import React, { forwardRef, useImperativeHandle, useState } from "react";
+import "./Style.css";
 
 const InfoBlock = forwardRef((props, ref) => {
   const [countyName, setCountyName] = useState("");
@@ -8,18 +9,7 @@ const InfoBlock = forwardRef((props, ref) => {
   }));
 
   return (
-    <div
-      style={{
-        width: "300px",
-        height: "600px",
-        border: "2px solid black",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "white",
-      }}
-    >
+    <div className='info-container'>
       <h2>County Information</h2>
       <p>{countyName ? `Selected County: ${countyName}` : "Hover over a county to see details."}</p>
     </div>
