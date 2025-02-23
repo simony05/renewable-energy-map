@@ -26,7 +26,7 @@ function App() {
           <button className="data-link">Wind Data →</button>
         </a>
       </div>
-      <h1 className="app-title">California Solar Power</h1>
+      <h1 className="app-title">SOLPower Solar Farm Finder</h1>
       <div className="app-content">
         {showCaliforniaMap ? (
           <Map infoBlockRef={infoBlockRef} onCaliforniaClick={handleCaliforniaClick} />
