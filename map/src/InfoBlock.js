@@ -51,7 +51,7 @@ const InfoBlock = forwardRef((props, ref) => {
   const getGroqResponse = async (messageContent) => {
     const stream = await groq.chat.completions.create({
       messages: [
-        { role: "system", content: "You are an environmental entrepreneur chatbot, but don't say you are, just explain your answer to every question you are asked like you are in a conversation." },
+        { role: "system", content: "You are an expert about solar power that is trying to helpful and educational." },
         { role: "user", content: messageContent },
       ],
       model: "llama-3.3-70b-versatile",
@@ -81,39 +81,28 @@ const InfoBlock = forwardRef((props, ref) => {
       <h2>County Information</h2>
       <p>{countyName ? `Selected County: ${countyName}` : "Hover over a county to see details."}</p>
 
+      <hr className='chat-divider'></hr>
+
       {/* Chat History */}
-      <div
-        style={{
-          flex: 1,
-          width: "100%",
-          overflowY: "scroll",
-          padding: "10px",
-          borderTop: "1px solid black",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-        }}
-      >
+      <div className="chat-box">
         {chatHistory.map((message, index) => (
-          <div key={index} style={{ marginBottom: "5px", textAlign: message.role === "user" ? "right" : "left" }}>
-            <strong>{message.role === "user" ? "You" : "Assistant"}:</strong>
-            <p style={{ margin: 0 }}>{message.content}</p>
+          <div key={index} style={{textAlign: message.role === "user" ? "right" : "left" }}>
+            <strong style={{ margin:"15px" }}>{message.role === "user" ? "You" : "Brock"}:</strong>
+            <p style={{ margin:"15px" }}>{message.content}</p>
           </div>
         ))}
       </div>
       
       {/* Input Area */}
-      <div style={{ display: "flex", width: "100%", padding: "10px" }}>
+      <div className='chat-input'>
         <input
           type="text"
           value={chatInput}
           onChange={handleInputChange}
           placeholder="Ask a question..."
-          style={{ flex: 1, padding: "5px" }}
+          style={{ flex: 1, padding: "8px" }}
         />
-        <button onClick={handleSend} style={{ marginLeft: "5px", padding: "5px 10px" }}>
-          Send
-        </button>
+        <button onClick={handleSend} style={{ marginLeft: "5px", padding: "5px 10px" }}> Send </button>
       </div>
     </div>
   );

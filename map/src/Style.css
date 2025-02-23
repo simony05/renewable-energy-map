@@ -1,136 +1,188 @@
 /* App */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 
 body {
-  margin:0;
-  color: #5a754b;
-  background-color: rgb(209, 212, 185);
+ margin:0;
+ color: #5a754b;
+ background-color: rgb(187, 190, 164);
 }
 
-.App {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url("https://www.transparenttextures.com/patterns/exclusive-paper.png");
-  background-position: center;
-  background-size: cover; /* Ensure the image covers the entire container */
-  position: relative;
+a {
+  color: transparent;
 }
+
+
+.App {
+ width: 100%;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ background-image: url("crossword.png");
+ background-repeat: repeat;
+ position: relative;
+}
+
+
 
 
 .app-title {
-  margin: 10px 0 20px;
-  font-family: "Poppins", serif;
-  font-size: 70px;
-  font-weight: 400;
+ margin: 10px 0 10px;
+ font-family: "Fraunces", serif;
+ font-size: 60px;
 }
+
 
 .app-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ gap: 50px;
 }
+
 
 .data-link {
-  padding: 5px 30px;
-  margin: 0 5px;
-  font-family: "Open Sans", serif;
-  border: #5a754b solid 1px;
-  border-radius: 80px;
-  background-color: transparent;
-  color: #5a754b;
+ padding: 5px 30px;
+ margin: 0 5px;
+ font-family: "Open Sans", serif;
+ border: #5a754b solid 1px;
+ border-radius: 80px;
+ background-color: transparent;
+ color: #5a754b;
 }
+
 
 .data-link:hover{
-  cursor: pointer;
-  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.1);
+ cursor: pointer;
+ box-shadow: 0 6px 4px rgba(0, 0, 0, 0.1);
 }
-
 
 
 /* Map */
 .map-container {
-  position: relative;
-  width: 700px;
-  height: 500px;
-  border: 2px solid white;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(1px);
-  background-color: rgba(207, 209, 190);
-
+ position: relative;
+ width: 700px;
+ height: 550px;
+ border: 2px solid white;
+ border-radius: 30px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+ backdrop-filter: blur(1px);
+ background-color: rgb(207, 209, 190);
 }
+
 
 /* App.css */
 .switch-button {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  z-index: 10;
-  padding: 5px 30px;
-  font-family: "Open Sans", serif;
-  border: white solid 2px;
-  border-radius: 80px;
-  background-color: transparent;
-  color: #5a754b;
-  box-shadow: 0 6px 4px rgba(0, 0, 0, 0);
+ position: absolute;
+ top: 20px;
+ right: 25px;
+ z-index: 10;
+ padding: 5px 30px;
+ font-family: "Open Sans", serif;
+ border: white solid 2px;
+ border-radius: 80px;
+ background-color: transparent;
+ color: #5a754b;
+ box-shadow: 0 6px 4px rgba(0, 0, 0, 0);
 }
+
 
 .switch-button:hover {
-  cursor: pointer;
-  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+ cursor: pointer;
+ box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
 }
+
 
 .map-wrapper {
-  width: 500px;
-  height: 500px;
-}
+ width: 550px;
+ height: 550px;
+ }
+
 
 .geography-default {
-  outline: "none";
+ outline: none;
 }
+
 
 .geography-hover {
-  fill: #ADD8E6;
-  outline: "none";
+ fill: #ADD8E6;
+ outline: none;
 }
 
+
 .geography-pressed {
-  fill: blue;
-  outline: "none";
+ fill: blue;
+ outline: none;
 }
+
+
 
 
 /* Info Block */
 
+
 .info-container {
-  width: 300px;
-  height: 500px;
-  border: 2px solid white;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: none;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(1px);
-  background-color: rgb(207, 209, 190);
+ width: 300px;
+ height: 550px;
+ border: 2px solid white;
+ border-radius: 30px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ background-color: none;
+ box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+ backdrop-filter: blur(1px);
+ background-color: rgb(207, 209, 190);
 }
 
+
 .info-container h2 {
-  font-family: "Open Sans", serif;
+  font-family: "Fraunces", serif;
   font-weight: 400;
+  margin-bottom: 0;
 }
+
 
 .info-container p {
   font-family: "Open Sans", serif;
+}
+
+
+.chat-box {
+  flex: 1;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 20px;
+}
+
+.chat-box strong {
+  font-family: "Open Sans", serif;
+}
+
+.chat-input {
+  display: flex;
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.chat-input input, button {
+  border: 2px solid white;
+  border-radius: 30px;
+  background-color: transparent;
+}
+
+.chat-divider {
+  width: 90%;
+  border: 1px solid white;
 }
