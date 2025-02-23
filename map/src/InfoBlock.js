@@ -93,12 +93,16 @@ const InfoBlock = forwardRef((props, ref) => {
         ))}
       </div>
       
-      {/* Input Area */}
       <div className='chat-input'>
         <input
           type="text"
           value={chatInput}
           onChange={handleInputChange}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              handleSend();
+            }
+          }}
           placeholder="Ask a question..."
           style={{ flex: 1, padding: "8px" }}
         />
