@@ -3,12 +3,14 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simp
 import caCounties from "./ca_counties.geojson";
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
+import { Tooltip } from 'react-tooltip';
 import "./Style.css";
 
 const Map = ({ infoBlockRef }) => {
   const [data, setData] = useState({});
   const [selectedCounty, setSelectedCounty] = useState(null);
   const [csvFile, setCsvFile] = useState("/ca_county_values.csv");
+  const [content, setContent] = useState("");
 
   // Load CSV Data
   const loadData = (file) => {
@@ -71,15 +73,17 @@ const Map = ({ infoBlockRef }) => {
       <button onClick={switchCsv} className="switch-button">
         Switch CSV
       </button>
+      <Tooltip id="county-tooltip" content={content} />
       <div className="map-wrapper">
         <ComposableMap width={600} height={600} projection="geoMercator" projectionConfig={{ center: [-119, 37.5], scale: 2500 }}>
           <ZoomableGroup zoom={1}>
+            {" "}
             <Geographies geography={caCounties}>
               {({ geographies }) =>
                 geographies.map((geo) => {
                   const countyName = geo.properties.CountyName;
                   const normalizedValue = data[countyName] || 0;
-                  const fillColor = selectedCounty === countyName ? "black" : colorScale(normalizedValue);
+                  const fillColor = selectedCounty === countyName ? "green" : colorScale(normalizedValue);
 
                   return (
                     <Geography
@@ -88,13 +92,18 @@ const Map = ({ infoBlockRef }) => {
                       fill={fillColor}
                       stroke="black"
                       strokeWidth={1}
-                      onMouseEnter={() => infoBlockRef.current.setCountyName(countyName)}
-                      onMouseLeave={() => infoBlockRef.current.setCountyName("")}
-                      onClick={() => setSelectedCounty(countyName)}
+                      data-tooltip-id="county-tooltip"
+                      data-tip={countyName}
+                      onMouseEnter={() => setContent(`${countyName}`)}
+                      onMouseLeave={() => setContent("")}
+                      onClick={() => {
+                        setSelectedCounty(countyName);
+                        infoBlockRef.current.setCountyName(countyName);
+                      }}
                       style={{
-                        default: { className: "geography-default" },
-                        hover: { className: "geography-hover" },
-                        pressed: { className: "geography-pressed" },
+                        default: { outline: "none" },
+                        hover: { fill: "green", outline: "none" },
+                        pressed: { fill: "green", outline: "none" },
                       }}
                     />
                   );

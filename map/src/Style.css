@@ -55,7 +55,7 @@ body {
 .map-container {
   position: relative;
   width: 700px;
-  height: 600px;
+  height: 500px;
   border: 2px solid white;
   border-radius: 30px;
   display: flex;
@@ -63,7 +63,8 @@ body {
   align-items: center;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(1px);
-  background-color: rgb(207, 209, 190);
+  background-color: rgba(207, 209, 190);
+
 }
 
 /* App.css */
@@ -87,23 +88,22 @@ body {
 }
 
 .map-wrapper {
-  width: 600px;
-  height: 600px;
-  
+  width: 500px;
+  height: 500px;
 }
 
 .geography-default {
-  outline: none;
+  outline: "none";
 }
 
 .geography-hover {
   fill: #ADD8E6;
-  outline: none;
+  outline: "none";
 }
 
 .geography-pressed {
   fill: blue;
-  outline: none;
+  outline: "none";
 }
 
 
