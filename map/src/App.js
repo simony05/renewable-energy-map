@@ -9,11 +9,11 @@ function App() {
   return (
     <div className="App">
       <div>
-        <button className="data-link">NASA Database →</button>
-        <button className="data-link">Climate Database →</button>
-        <button className="data-link">Wind Database →</button>
+        <a href="https://www.nrel.gov/grid/solar-power-data.html"> <button className="data-link">Solar Power Data →</button> </a>
+        <a href="https://power.larc.nasa.gov/data-access-viewer/"> <button className="data-link">NASA Climate Data →</button> </a>
+        <a href="https://power.larc.nasa.gov/data-access-viewer/"> <button className="data-link">Wind Data →</button> </a>
       </div>
-      <h1 className="app-title">California Counties Map</h1>
+      <h1 className="app-title">California Solar Power</h1>
       <div className="app-content">
         <Map infoBlockRef={infoBlockRef} />
         <InfoBlock ref={infoBlockRef} />
