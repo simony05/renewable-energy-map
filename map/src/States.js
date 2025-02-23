@@ -10,7 +10,7 @@ const States = ({ onCaliforniaClick }) => {
   const [data, setData] = useState({});
   const [selectedCounty, setSelectedCounty] = useState(null);
   const [content, setContent] = useState("");
-  const [csvFile, setCsvFile] = useState("/us_states.csv");
+  const [csvFile, setCsvFile] = useState("/state_predictions.csv");
 
   const loadData = (file) => {
     csv(file)
@@ -33,7 +33,7 @@ const States = ({ onCaliforniaClick }) => {
 
   const colorScale = scaleQuantile()
     .domain(Object.values(data))
-    .range(csvFile === "/us_states.csv"
+    .range(csvFile === "/state_predictions.csv"
       ? [
           "#fffff0",
           "#fffde7",
@@ -65,12 +65,12 @@ const States = ({ onCaliforniaClick }) => {
     const switchCsv = () => {
         setSelectedCounty(null);
         setCsvFile(prevFile => 
-          prevFile === "/us_states.csv" ? "/us_states2.csv" : "/us_states.csv"
+          prevFile === "/state_predictions.csv" ? "/state_predictions.csv" : "/state_predictions.csv"
         );
       };
 
   const renderLegend = () => {
-    const gradientClass = csvFile === "/us_states.csv" ? "legend-gradient-yellow" : "legend-gradient-blue";
+    const gradientClass = csvFile === "/state_predictions.csv" ? "legend-gradient-yellow" : "legend-gradient-blue";
   
     return (
       <div className="legend">

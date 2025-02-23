@@ -1,5 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useState } from "react";
 import Groq from "groq-sdk";
+import { csv } from "d3-fetch";
 import "./Style.css";
 
 const groq = new Groq({ apiKey: process.env.REACT_APP_GROQ_API_KEY, dangerouslyAllowBrowser: true });
@@ -10,17 +11,35 @@ const InfoBlock = forwardRef((props, ref) => {
   const [chatHistory, setChatHistory] = useState([]);
 
   useImperativeHandle(ref, () => ({
-    setCountyName: (name) => {
+    setCountyName: async (name) => {
       if (name !== countyName) {
         setChatHistory([]); 
         setCountyName(name);
-        setChatHistory((prev) => [
-          ...prev,
-          { role: "assistant", content: `You selected ${name}. What would you like to know?` }
-        ]);
+        await loadPredictions(name);
       }
     },
   }));
+
+  const loadPredictions = async (county) => {
+    try {
+      const data = await csv("/california_predictions.csv");
+      const prediction = data.find(d => d.CountyName === county);
+      const truncatedValue = parseFloat(prediction.Value).toFixed(4);
+      if (prediction) {
+        setChatHistory((prev) => [
+          ...prev,
+          { role: "assistant", content: `You selected ${county}, which has a prediction of ${truncatedValue} solar capacity factor. What would you like to know?` }
+        ]);
+      } else {
+        setChatHistory((prev) => [
+          ...prev,
+          { role: "assistant", content: `You selected ${county}. No predictions available. What would you like to know?` }
+        ]);
+      }
+    } catch (error) {
+      console.error("Error loading predictions:", error);
+    }
+  };
 
   const handleInputChange = (e) => {
     setChatInput(e.target.value);
@@ -46,7 +65,7 @@ const InfoBlock = forwardRef((props, ref) => {
   const getGroqResponse = async (messageContent) => {
     const stream = await groq.chat.completions.create({
       messages: [
-        { role: "system", content: `You are an expert about solar power that is trying to helpful and educational. Please only speak in full sentences like you are in a conversation. Only talk about ${countyName}.` },
+        { role: "system", content: `You are an expert about solar power that is trying to be helpful and educational. Please only speak in full sentences like you are in a conversation. Only talk about ${countyName}.` },
         { role: "user", content: messageContent },
       ],
       model: "llama-3.3-70b-versatile",
@@ -78,7 +97,6 @@ const InfoBlock = forwardRef((props, ref) => {
 
       <hr className='chat-divider'></hr>
 
-      {/* Chat History */}
       <div className="chat-box">
         {chatHistory.map((message, index) => (
           <div key={index} style={{textAlign: message.role === "user" ? "right" : "left" }}>
