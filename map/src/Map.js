@@ -49,16 +49,20 @@ const Map = ({ infoBlockRef }) => {
           "#ffeb3b"
         ]
       : [
-          "#e0e7ff", // Lightest blue
-          "#c7d2fe",
-          "#a5b4fc",
-          "#818cf8",
-          "#6366f1",
-          "#4f46e5",
-          "#4338ca",
-          "#3730a3",
-          "#1e3a8a"
-        ]
+        "#FFFFFF",
+        "#F0FDFF",
+        "#E0FBFF",
+        "#D1F9FF",
+        "#C1F7FF",
+        "#B2F5FF",
+        "#A3F3FF",
+        "#93F1FF",
+        "#84EFFF",
+        "#75EDFF",
+        "#65EBFF",
+        "#56E9FF",
+        "#61DAF3"
+      ]
     );
 
   const switchCsv = () => {
@@ -68,6 +72,28 @@ const Map = ({ infoBlockRef }) => {
       prevFile === "/ca_county_values.csv" ? "/ca_county_values2.csv" : "/ca_county_values.csv"
     );
   };
+
+  const renderLegend = () => {
+    // Conditionally set the class name for the gradient
+    const gradientClass = csvFile === "/ca_county_values.csv" ? "legend-gradient-yellow" : "legend-gradient-blue";
+  
+    return (
+      <div className="legend">
+        100
+        <div className={gradientClass}></div>
+        
+        <div className="legend-labels">
+          0
+          <div className="legend-label"></div>
+          <div className="legend-label"></div>
+          <div className="legend-label"></div>
+          <div className="legend-label"></div>
+          <div className="legend-label"></div>
+        </div>
+      </div>
+    );
+  };
+  
 
   return (
     <div className="map-container">
@@ -114,6 +140,10 @@ const Map = ({ infoBlockRef }) => {
           </ZoomableGroup>
         </ComposableMap>
       </div>
+      <div className="legend-container">
+        {renderLegend()}
+      </div>
+
     </div>
 
   );

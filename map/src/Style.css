@@ -188,3 +188,50 @@ a {
   width: 90%;
   border: 1px solid white;
 }
+
+.legend-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.legend-gradient-yellow {
+  width: 25px;
+  height: 200px;  /* Adjust based on desired height */
+  background: linear-gradient(to top, #fffff0, #ffeb3b); /* Use your color scale */
+  /* margin-right: 10px; */
+  justify-content: center;
+  align-items: center;
+}
+
+.legend-gradient-blue {
+  width: 25px;
+  height: 200px;  /* Adjust based on desired height */
+  background: linear-gradient(to top, #fffff0, #61DAF3); /* Use your color scale */
+  /* margin-right: 10px; */
+  justify-content: center;
+  align-items: center;
+}
+
+.legend-labels {
+  display: flex;
+  flex-direction: column;
+  width: 25px;
+  /* margin-left: 10px; */
+  justify-content: center;
+  align-items: center;
+}
+
+.legend-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
