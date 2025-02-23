@@ -3,6 +3,7 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simp
 import caCounties from "./ca_counties.geojson";
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
+import "./Style.css";
 
 const Map = ({ infoBlockRef }) => {
   const [data, setData] = useState({});
@@ -66,20 +67,11 @@ const Map = ({ infoBlockRef }) => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      <button
-        onClick={switchCsv}
-        style={{
-          position: "absolute",
-          top: "10px",
-          right: "10px",
-          zIndex: 10,
-          padding: "5px 10px",
-        }}
-      >
+    <div className="map-container">
+      <button onClick={switchCsv} className="switch-button">
         Switch CSV
       </button>
-      <div style={{ width: "600px", height: "600px", border: "2px solid black", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div className="map-wrapper">
         <ComposableMap width={600} height={600} projection="geoMercator" projectionConfig={{ center: [-119, 37.5], scale: 2500 }}>
           <ZoomableGroup zoom={1}>
             <Geographies geography={caCounties}>
@@ -100,9 +92,9 @@ const Map = ({ infoBlockRef }) => {
                       onMouseLeave={() => infoBlockRef.current.setCountyName("")}
                       onClick={() => setSelectedCounty(countyName)}
                       style={{
-                        default: { outline: "none" },
-                        hover: { fill: "#ADD8E6", outline: "none" },
-                        pressed: { fill: "blue", outline: "none" },
+                        default: { className: "geography-default" },
+                        hover: { className: "geography-hover" },
+                        pressed: { className: "geography-pressed" },
                       }}
                     />
                   );
@@ -113,6 +105,7 @@ const Map = ({ infoBlockRef }) => {
         </ComposableMap>
       </div>
     </div>
+
   );
 };
 
