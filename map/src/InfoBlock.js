@@ -11,10 +11,8 @@ const InfoBlock = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     setCountyName: (name) => {
-      // Update the county name
       if (name !== countyName) {
-        // Clear chat history or update with new selection message
-        setChatHistory([]); // Clear chat history if desired
+        setChatHistory([]); 
         setCountyName(name);
         setChatHistory((prev) => [
           ...prev,
@@ -31,14 +29,11 @@ const InfoBlock = forwardRef((props, ref) => {
   const handleSend = async () => {
     if (!chatInput) return;
 
-    // Add user message to chat history
     const userMessage = { role: "user", content: chatInput };
     setChatHistory((prev) => [...prev, userMessage]);
 
-    // Clear input field
     setChatInput("");
 
-    // Get response from Groq only when the user sends a question
     await getGroqResponse(userMessage.content);
   };
 
@@ -62,7 +57,7 @@ const InfoBlock = forwardRef((props, ref) => {
       stream: true,
     });
     let responseContent = "";
-    // Add a placeholder for the assistant's response
+
     setChatHistory((prev) => [...prev, { role: "assistant", content: "" }]);
     for await (const chunk of stream) {
       const content = chunk.choices[0]?.delta?.content || "";
@@ -70,7 +65,7 @@ const InfoBlock = forwardRef((props, ref) => {
       const limitedResponse = limitResponseToSentences(responseContent, 3);
       setChatHistory((prev) => {
         const updatedHistory = [...prev];
-        updatedHistory[updatedHistory.length - 1].content = limitedResponse; // Update last assistant message
+        updatedHistory[updatedHistory.length - 1].content = limitedResponse; 
         return updatedHistory;
       });
     }

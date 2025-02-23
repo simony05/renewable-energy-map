@@ -1,4 +1,4 @@
-/* App */
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 
@@ -60,8 +60,6 @@ a {
  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Map */
 .map-container {
  position: relative;
  width: 700px;
@@ -77,7 +75,6 @@ a {
 }
 
 
-/* App.css */
 .switch-button {
  position: absolute;
  top: 20px;
@@ -92,11 +89,31 @@ a {
  box-shadow: 0 6px 4px rgba(0, 0, 0, 0);
 }
 
+.switch-button2 {
+  position: absolute;
+  top: 60px;
+  right: 25px;
+  z-index: 10;
+  padding: 5px 30px;
+  font-family: "Open Sans", serif;
+  border: white solid 2px;
+  border-radius: 80px;
+  background-color: transparent;
+  color: #5a754b;
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0);
+ }
+ 
+
 
 .switch-button:hover {
  cursor: pointer;
  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
 }
+
+.switch-button2:hover {
+  cursor: pointer;
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+ }
 
 
 .map-wrapper {
@@ -109,23 +126,15 @@ a {
  outline: none;
 }
 
-
 .geography-hover {
  fill: #ADD8E6;
  outline: none;
 }
 
-
 .geography-pressed {
  fill: blue;
  outline: none;
 }
-
-
-
-
-/* Info Block */
-
 
 .info-container {
  width: 300px;
@@ -162,7 +171,6 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* max-height: 100px; */
   overflow-y: auto;
   margin: 0 20px;
 }
@@ -206,18 +214,16 @@ a {
 
 .legend-gradient-yellow {
   width: 25px;
-  height: 200px;  /* Adjust based on desired height */
-  background: linear-gradient(to top, #fffff0, #ffeb3b); /* Use your color scale */
-  /* margin-right: 10px; */
+  height: 200px;
+  background: linear-gradient(to top, #fffff0, #ffeb3b);
   justify-content: center;
   align-items: center;
 }
 
 .legend-gradient-blue {
   width: 25px;
-  height: 200px;  /* Adjust based on desired height */
-  background: linear-gradient(to top, #fffff0, #61DAF3); /* Use your color scale */
-  /* margin-right: 10px; */
+  height: 200px;
+  background: linear-gradient(to top, #fffff0, #61DAF3);
   justify-content: center;
   align-items: center;
 }
@@ -226,7 +232,6 @@ a {
   display: flex;
   flex-direction: column;
   width: 25px;
-  /* margin-left: 10px; */
   justify-content: center;
   align-items: center;
 }
@@ -234,4 +239,14 @@ a {
 .legend-label {
   font-size: 12px;
   margin-bottom: 5px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spacer {
+  height: 10px;
 }

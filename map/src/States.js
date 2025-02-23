@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
-import caCounties from "./ca_counties.geojson";
+import states from "./states.geojson";
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
 import { Tooltip } from 'react-tooltip';
 import "./Style.css";
 
-const Map = ({ infoBlockRef, onCaliforniaClick }) => {
+const States = ({ onCaliforniaClick }) => {
   const [data, setData] = useState({});
   const [selectedCounty, setSelectedCounty] = useState(null);
-  const [csvFile, setCsvFile] = useState("/ca_county_values.csv");
   const [content, setContent] = useState("");
+  const [csvFile, setCsvFile] = useState("/us_states.csv");
 
   const loadData = (file) => {
     csv(file)
@@ -33,7 +33,7 @@ const Map = ({ infoBlockRef, onCaliforniaClick }) => {
 
   const colorScale = scaleQuantile()
     .domain(Object.values(data))
-    .range(csvFile === "/ca_county_values.csv"
+    .range(csvFile === "/us_states.csv"
       ? [
           "#fffff0",
           "#fffde7",
@@ -62,15 +62,15 @@ const Map = ({ infoBlockRef, onCaliforniaClick }) => {
       ]
     );
 
-  const switchCsv = () => {
-    setSelectedCounty(null);
-    setCsvFile(prevFile => 
-      prevFile === "/ca_county_values.csv" ? "/ca_county_values2.csv" : "/ca_county_values.csv"
-    );
-  };
+    const switchCsv = () => {
+        setSelectedCounty(null);
+        setCsvFile(prevFile => 
+          prevFile === "/us_states.csv" ? "/us_states2.csv" : "/us_states.csv"
+        );
+      };
 
   const renderLegend = () => {
-    const gradientClass = csvFile === "/ca_county_values.csv" ? "legend-gradient-yellow" : "legend-gradient-blue";
+    const gradientClass = csvFile === "/us_states.csv" ? "legend-gradient-yellow" : "legend-gradient-blue";
   
     return (
       <div className="legend">
@@ -95,18 +95,15 @@ const Map = ({ infoBlockRef, onCaliforniaClick }) => {
       <button onClick={switchCsv} className="switch-button">
         Switch CSV
       </button>
-      <button onClick={onCaliforniaClick} className="switch-button2">
-        USA Map
-      </button>
       <Tooltip id="county-tooltip" content={content} />
       <div className="map-wrapper">
-        <ComposableMap width={600} height={600} projection="geoMercator" projectionConfig={{ center: [-119, 37.5], scale: 2500 }}>
+        <ComposableMap width={600} height={600} projection="geoMercator" projectionConfig={{ center: [-96.5, 37.5], scale: 550 }}>
           <ZoomableGroup zoom={1}>
             {" "}
-            <Geographies geography={caCounties}>
+            <Geographies geography={states}>
               {({ geographies }) =>
                 geographies.map((geo) => {
-                  const countyName = geo.properties.CountyName;
+                  const countyName = geo.properties.NAME;
                   const normalizedValue = data[countyName] || 0;
                   const fillColor = selectedCounty === countyName ? "green" : colorScale(normalizedValue);
 
@@ -122,8 +119,9 @@ const Map = ({ infoBlockRef, onCaliforniaClick }) => {
                       onMouseEnter={() => setContent(`${countyName}`)}
                       onMouseLeave={() => setContent("")}
                       onClick={() => {
-                        setSelectedCounty(countyName);
-                        infoBlockRef.current.setCountyName(countyName);
+                        if (countyName === "California") {
+                            onCaliforniaClick();
+                          }         
                       }}
                       style={{
                         default: { outline: "none" },
@@ -147,4 +145,4 @@ const Map = ({ infoBlockRef, onCaliforniaClick }) => {
   );
 };
 
-export default Map;
+export default States;
