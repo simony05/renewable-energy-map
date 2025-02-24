@@ -93,7 +93,7 @@ const Map = ({ infoBlockRef, onCaliforniaClick }) => {
   return (
     <div className="map-container">
       <button onClick={switchCsv} className="switch-button">
-        Switch CSV
+        {csvFile === "/california_predictions.csv" ? "Solar Data" : "Wind Data"}
       </button>
       <button onClick={onCaliforniaClick} className="switch-button2">
         USA Map
